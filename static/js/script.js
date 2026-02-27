@@ -9,6 +9,12 @@ const TicTacToe = (() => {
         if (gameBoard[xCoor][yCoor] === "") {
             gameBoard[xCoor][yCoor] = mark;
         }
+
+        else {
+            console.log("Please choose another position. That position is already marked");
+        }
+
+
     }
 
     const showGameBoard = () => gameBoard;

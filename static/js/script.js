@@ -18,11 +18,24 @@ const GameBoard = (() => {
     const showGameBoard = () => gameboard;
 
     function isWinner() {
-        //check each row for winner
+        //check each row
         for (let i = 0; i < gameboard.length; i++) {
             if (gameboard[i].every(mark => mark !== "" && mark === gameboard[i][0])) {
                 return true;
             }
+        }
+
+        //check each column
+
+
+        //check diagonal
+        if (gameboard[0][0] !== "" && (gameboard[0][0] === gameboard[1][1]) && (gameboard[0][0] === gameboard[2][2])) {
+            return true;
+        }
+
+        //check anti-diagonal
+        if (gameboard[0][2] !== "" && (gameboard[0][2] === gameboard[1][1]) && (gameboard[0][2] === gameboard[2][0])) {
+            return true;
         }
         return false;
     }

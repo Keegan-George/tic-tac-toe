@@ -15,8 +15,14 @@ const GameBoard = (() => {
         }
     }
 
-    function showGameBoard() {
-        return gameboard;
+    function displayGameBoard() {
+        console.log(`
+            Tic Tac Toe Board:
+            | ${gameboard[0][0]} | ${gameboard[0][1]} | ${gameboard[0][2]} |
+            | ${gameboard[1][0]} | ${gameboard[1][1]} | ${gameboard[1][2]} |
+            | ${gameboard[2][0]} | ${gameboard[2][1]} | ${gameboard[2][2]} |
+            `
+        )
     }
 
     function isWinner() {
@@ -52,7 +58,7 @@ const GameBoard = (() => {
         return false;
     }
 
-    return { markPosition, showGameBoard, isWinner };
+    return { markPosition, displayGameBoard, isWinner };
 })();
 
 
@@ -66,15 +72,16 @@ const GameController = (() => {
     }
 
     console.log("Starting game...");
+    GameBoard.displayGameBoard();
 
     while (!GameBoard.isWinner()) {
-        console.log(GameBoard.showGameBoard());
         console.log(`Current player: ${currentPlayer}`);
 
         let row = Number(prompt("Select a row: "));
         let column = Number(prompt("Select a column: "));
 
         GameBoard.markPosition(currentPlayer, row, column);
+        GameBoard.displayGameBoard();
 
         switchPlayer();
 

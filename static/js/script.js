@@ -15,7 +15,9 @@ const GameBoard = (() => {
         }
     }
 
-    function showGameBoard() { return gameboard; }
+    function showGameBoard() {
+        return gameboard;
+    }
 
     function isWinner() {
         //check each row
@@ -50,10 +52,31 @@ const GameBoard = (() => {
         return false;
     }
 
-
     return { markPosition, showGameBoard, isWinner };
 })();
 
 
+const GameController = (() => {
+    const player1 = "X";
+    const player2 = "O";
+    let currentPlayer = player1;
 
-// function Player = ;
+    function switchPlayer() {
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
+    }
+
+    console.log("Starting game...");
+
+    while (!GameBoard.isWinner()) {
+        console.log(GameBoard.showGameBoard());
+        console.log(`Current player: ${currentPlayer}`);
+
+        let row = Number(prompt("Select a row: "));
+        let column = Number(prompt("Select a column: "));
+
+        GameBoard.markPosition(currentPlayer, row, column);
+
+        switchPlayer();
+
+    }
+})();

@@ -27,10 +27,8 @@ const GameBoard = (() => {
 
     function isWinner() {
         //check each row
-        for (let i = 0; i < gameboard.length; i++) {
-            if (gameboard[i].every(cell => cell !== "" && cell === gameboard[i][0])) {
-                return true;
-            }
+        if (gameboard.some(row => row.every(cell => cell !== "" && cell === row[0]))){
+            return true;
         }
 
         //check each column

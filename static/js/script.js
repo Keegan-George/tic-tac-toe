@@ -58,7 +58,11 @@ const GameBoard = (() => {
         return false;
     }
 
-    return { markPosition, displayGameBoard, isWinner };
+    function isFull() {
+        return gameboard.every(row => row.every(cell => cell !== ""));
+    }
+
+    return { markPosition, displayGameBoard, isWinner, isFull };
 })();
 
 
@@ -74,7 +78,7 @@ const GameController = (() => {
     console.log("Starting game...");
     GameBoard.displayGameBoard();
 
-    while (!GameBoard.isWinner()) {
+    while (!GameBoard.isWinner() && !GameBoard.isFull()) {
         console.log(`Current player: ${currentPlayer}`);
 
         let row = Number(prompt("Select a row: "));

@@ -102,3 +102,18 @@ const GameBoard = (() => {
 
 //     console.log(`Winner is: ${winningPlayer}`);
 // })();
+
+const DisplayController = (() => {
+    const gameboard = document.querySelector(".gameboard");
+
+    gameboard.addEventListener("click", (event) => {
+        const cell = event.target.closest(".cell");
+
+        if (!cell) {
+            return;
+        }
+
+        const row = cell.getAttribute("data-row");
+        const column = cell.getAttribute("data-column");
+    });
+})();

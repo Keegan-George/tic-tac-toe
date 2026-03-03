@@ -27,7 +27,7 @@ const GameBoard = (() => {
 
     function isWinner() {
         //check each row
-        if (gameboard.some(row => row.every(cell => cell !== "" && cell === row[0]))){
+        if (gameboard.some(row => row.every(cell => cell !== "" && cell === row[0]))) {
             return true;
         }
 
@@ -63,11 +63,11 @@ const GameBoard = (() => {
     return { markPosition, displayGameBoard, isWinner, isFull };
 })();
 
-
 const GameController = (() => {
     const player1 = "X";
     const player2 = "O";
     let currentPlayer = player1;
+    let winningPlayer = "";
 
     function switchPlayer() {
         currentPlayer = currentPlayer === player1 ? player2 : player1;
@@ -76,7 +76,9 @@ const GameController = (() => {
     console.log("Starting game...");
     GameBoard.displayGameBoard();
 
-    while (!GameBoard.isWinner() && !GameBoard.isFull()) {
+    let startGame = true;
+
+    while (startGame) {
         console.log(`Current player: ${currentPlayer}`);
 
         let row = Number(prompt("Select a row: "));
@@ -85,7 +87,18 @@ const GameController = (() => {
         GameBoard.markPosition(currentPlayer, row, column);
         GameBoard.displayGameBoard();
 
+        if (GameBoard.isWinner()) {
+            startGame = false;
+            winningPlayer = currentPlayer;
+        }
+        else if (GameBoard.isFull()) {
+            startGame = false;
+            winningPlayer = "draw";
+        }
+
         switchPlayer();
 
     }
+
+    console.log(`Winner is: ${winningPlayer}`);
 })();

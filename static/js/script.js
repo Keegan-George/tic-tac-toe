@@ -63,42 +63,42 @@ const GameBoard = (() => {
     return { markPosition, displayGameBoard, isWinner, isFull };
 })();
 
-const GameController = (() => {
-    const player1 = "X";
-    const player2 = "O";
-    let currentPlayer = player1;
-    let winningPlayer = "";
+// const GameController = (() => {
+//     const player1 = "X";
+//     const player2 = "O";
+//     let currentPlayer = player1;
+//     let winningPlayer = "";
 
-    function switchPlayer() {
-        currentPlayer = currentPlayer === player1 ? player2 : player1;
-    }
+//     function switchPlayer() {
+//         currentPlayer = currentPlayer === player1 ? player2 : player1;
+//     }
 
-    console.log("Starting game...");
-    GameBoard.displayGameBoard();
+//     console.log("Starting game...");
+//     GameBoard.displayGameBoard();
 
-    let startGame = true;
+//     let startGame = true;
 
-    while (startGame) {
-        console.log(`Current player: ${currentPlayer}`);
+//     while (startGame) {
+//         console.log(`Current player: ${currentPlayer}`);
 
-        let row = Number(prompt("Select a row: "));
-        let column = Number(prompt("Select a column: "));
+//         let row = Number(prompt("Select a row: "));
+//         let column = Number(prompt("Select a column: "));
 
-        GameBoard.markPosition(currentPlayer, row, column);
-        GameBoard.displayGameBoard();
+//         GameBoard.markPosition(currentPlayer, row, column);
+//         GameBoard.displayGameBoard();
 
-        if (GameBoard.isWinner()) {
-            startGame = false;
-            winningPlayer = currentPlayer;
-        }
-        else if (GameBoard.isFull()) {
-            startGame = false;
-            winningPlayer = "draw";
-        }
+//         if (GameBoard.isWinner()) {
+//             startGame = false;
+//             winningPlayer = currentPlayer;
+//         }
+//         else if (GameBoard.isFull()) {
+//             startGame = false;
+//             winningPlayer = "draw";
+//         }
 
-        switchPlayer();
+//         switchPlayer();
 
-    }
+//     }
 
-    console.log(`Winner is: ${winningPlayer}`);
-})();
+//     console.log(`Winner is: ${winningPlayer}`);
+// })();

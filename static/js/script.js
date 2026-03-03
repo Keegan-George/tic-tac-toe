@@ -100,8 +100,7 @@ const GameController = (() => {
         if (GameBoard.isValidMove(row, column)) {
             GameBoard.markPosition(GameBoard.getCurrentPlayer(), row, column);
             GameBoard.displayGameboard();
-            //TO DO:
-            //update the cell in UI
+            DisplayController.updateCell(GameBoard.getCurrentPlayer(), row, column);
 
             if (GameBoard.isWinner()) {
                 //TO DO:
@@ -126,6 +125,10 @@ const GameController = (() => {
 
 
 const DisplayController = (() => {
-    
+    function updateCell(mark, row, column) {
+        const cell = document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
+        cell.textContent = mark;
+    }
 
+    return { updateCell };
 })();

@@ -1,13 +1,16 @@
 const GameBoard = (() => {
-    const gameboard = [
+    const gameboardArray = [
         ["", "", ""],
         ["", "", ""],
         ["", "", ""]
     ];
 
+
+
+
     function markPosition(mark, xCoor, yCoor) {
-        if (gameboard[xCoor][yCoor] === "") {
-            gameboard[xCoor][yCoor] = mark;
+        if (gameboardArray[xCoor][yCoor] === "") {
+            gameboardArray[xCoor][yCoor] = mark;
         }
 
         else {
@@ -18,24 +21,24 @@ const GameBoard = (() => {
     function displayGameBoard() {
         console.log(`
             Tic Tac Toe Board:
-            | ${gameboard[0][0]} | ${gameboard[0][1]} | ${gameboard[0][2]} |
-            | ${gameboard[1][0]} | ${gameboard[1][1]} | ${gameboard[1][2]} |
-            | ${gameboard[2][0]} | ${gameboard[2][1]} | ${gameboard[2][2]} |
+            | ${gameboardArray[0][0]} | ${gameboardArray[0][1]} | ${gameboardArray[0][2]} |
+            | ${gameboardArray[1][0]} | ${gameboardArray[1][1]} | ${gameboardArray[1][2]} |
+            | ${gameboardArray[2][0]} | ${gameboardArray[2][1]} | ${gameboardArray[2][2]} |
             `
         )
     }
 
     function isWinner() {
         //check each row
-        if (gameboard.some(row => row.every(cell => cell !== "" && cell === row[0]))) {
+        if (gameboardArray.some(row => row.every(cell => cell !== "" && cell === row[0]))) {
             return true;
         }
 
         //check each column
-        for (let i = 0; i < gameboard.length; i++) {
+        for (let i = 0; i < gameboardArray.length; i++) {
             let column = [];
-            for (let j = 0; j < gameboard.length; j++) {
-                column.push(gameboard[j][i]);
+            for (let j = 0; j < gameboardArray.length; j++) {
+                column.push(gameboardArray[j][i]);
             }
 
             if (column.every(cell => cell !== "" && cell === column[i][0])) {
@@ -44,12 +47,12 @@ const GameBoard = (() => {
         }
 
         //check diagonal
-        if (gameboard[0][0] !== "" && (gameboard[0][0] === gameboard[1][1]) && (gameboard[0][0] === gameboard[2][2])) {
+        if (gameboardArray[0][0] !== "" && (gameboardArray[0][0] === gameboardArray[1][1]) && (gameboardArray[0][0] === gameboardArray[2][2])) {
             return true;
         }
 
         //check anti-diagonal
-        if (gameboard[0][2] !== "" && (gameboard[0][2] === gameboard[1][1]) && (gameboard[0][2] === gameboard[2][0])) {
+        if (gameboardArray[0][2] !== "" && (gameboardArray[0][2] === gameboardArray[1][1]) && (gameboardArray[0][2] === gameboardArray[2][0])) {
             return true;
         }
 
@@ -57,53 +60,29 @@ const GameBoard = (() => {
     }
 
     function isFull() {
-        return gameboard.every(row => row.every(cell => cell !== ""));
+        return gameboardArray.every(row => row.every(cell => cell !== ""));
     }
 
     return { markPosition, displayGameBoard, isWinner, isFull };
 })();
 
-// const GameController = (() => {
-//     const player1 = "X";
-//     const player2 = "O";
-//     let currentPlayer = player1;
-//     let winningPlayer = "";
+const GameController = (() => {
+    const player1 = "X";
+    const player2 = "O";
+    let currentPlayer = player1;
+    let winningPlayer = "";
 
-//     function switchPlayer() {
-//         currentPlayer = currentPlayer === player1 ? player2 : player1;
-//     }
+    function switchPlayer() {
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
+    }
 
-//     console.log("Starting game...");
-//     GameBoard.displayGameBoard();
+    GameBoard.displayGameBoard();
 
-//     let startGame = true;
+    let startGame = true;
 
-//     while (startGame) {
-//         console.log(`Current player: ${currentPlayer}`);
 
-//         let row = Number(prompt("Select a row: "));
-//         let column = Number(prompt("Select a column: "));
+    console.log(`Current player: ${currentPlayer}`);
 
-//         GameBoard.markPosition(currentPlayer, row, column);
-//         GameBoard.displayGameBoard();
-
-//         if (GameBoard.isWinner()) {
-//             startGame = false;
-//             winningPlayer = currentPlayer;
-//         }
-//         else if (GameBoard.isFull()) {
-//             startGame = false;
-//             winningPlayer = "draw";
-//         }
-
-//         switchPlayer();
-
-//     }
-
-//     console.log(`Winner is: ${winningPlayer}`);
-// })();
-
-const DisplayController = (() => {
     const gameboard = document.querySelector(".gameboard");
 
     gameboard.addEventListener("click", (event) => {
@@ -115,5 +94,29 @@ const DisplayController = (() => {
 
         const row = cell.getAttribute("data-row");
         const column = cell.getAttribute("data-column");
+
+        GameBoard.markPosition("X", row, column);
     });
+
+    GameBoard.markPosition(currentPlayer, row, column);
+    GameBoard.displayGameBoard();
+
+    if (GameBoard.isWinner()) {
+        startGame = false;
+        winningPlayer = currentPlayer;
+    }
+    else if (GameBoard.isFull()) {
+        startGame = false;
+        winningPlayer = "draw";
+    }
+
+    switchPlayer();
+
+
+    console.log(`Winner is: ${winningPlayer}`);
+})();
+
+
+const DisplayController = (() => {
+
 })();

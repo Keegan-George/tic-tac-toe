@@ -1,12 +1,13 @@
 const GameBoard = (() => {
+    const playerX = "X";
+    const playerO = "O";
+    let currentPlayer = playerX;
+
     const gameboardArray = [
         ["", "", ""],
         ["", "", ""],
         ["", "", ""]
     ];
-
-
-
 
     function markPosition(mark, xCoor, yCoor) {
         if (gameboardArray[xCoor][yCoor] === "") {
@@ -18,7 +19,7 @@ const GameBoard = (() => {
         }
     }
 
-    function displayGameBoard() {
+    function displayGameboard() {
         console.log(`
             Tic Tac Toe Board:
             | ${gameboardArray[0][0]} | ${gameboardArray[0][1]} | ${gameboardArray[0][2]} |
@@ -63,26 +64,23 @@ const GameBoard = (() => {
         return gameboardArray.every(row => row.every(cell => cell !== ""));
     }
 
-    return { markPosition, displayGameBoard, isWinner, isFull };
-})();
-
-const GameController = (() => {
-    const player1 = "X";
-    const player2 = "O";
-    let currentPlayer = player1;
-    let winningPlayer = "";
-
     function switchPlayer() {
-        currentPlayer = currentPlayer === player1 ? player2 : player1;
+        currentPlayer = currentPlayer === playerX ? playerO : playerX;
     }
 
-    GameBoard.displayGameBoard();
+    function isValidMove(row, column) {
+        return gameboardArray[row][column] === "";
+    }
 
-    let startGame = true;
+    function getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    return { markPosition, displayGameboard, isWinner, isFull, switchPlayer, isValidMove, getCurrentPlayer };
+})();
 
 
-    console.log(`Current player: ${currentPlayer}`);
-
+const GameController = (() => {
     const gameboard = document.querySelector(".gameboard");
 
     gameboard.addEventListener("click", (event) => {
@@ -92,31 +90,42 @@ const GameController = (() => {
             return;
         }
 
-        const row = cell.getAttribute("data-row");
-        const column = cell.getAttribute("data-column");
+        row = cell.getAttribute("data-row");
+        column = cell.getAttribute("data-column");
 
-        GameBoard.markPosition("X", row, column);
+        validateClick(row, column);
     });
 
-    GameBoard.markPosition(currentPlayer, row, column);
-    GameBoard.displayGameBoard();
+    function validateClick(row, column) {
+        if (GameBoard.isValidMove(row, column)) {
+            GameBoard.markPosition(GameBoard.getCurrentPlayer(), row, column);
+            GameBoard.displayGameboard();
+            //TO DO:
+            //update the cell in UI
 
-    if (GameBoard.isWinner()) {
-        startGame = false;
-        winningPlayer = currentPlayer;
+            if (GameBoard.isWinner()) {
+                //TO DO:
+                // update UI with winning player
+                // disable further click events
+                // reset button appears (or is enabled) to play a new round
+            }
+
+            else if (GameBoard.isFull()) {
+                //TO DO:
+                //update UI with 'draw'
+                //disable further click events
+                //reset button appears (or is enabled) to play a new round
+            }
+
+            else {
+                GameBoard.switchPlayer();
+            }
+        }
     }
-    else if (GameBoard.isFull()) {
-        startGame = false;
-        winningPlayer = "draw";
-    }
-
-    switchPlayer();
-
-
-    console.log(`Winner is: ${winningPlayer}`);
 })();
 
 
 const DisplayController = (() => {
+    
 
 })();

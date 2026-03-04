@@ -103,21 +103,22 @@ const GameController = (() => {
             DisplayController.updateCell(GameBoard.getCurrentPlayer(), row, column);
 
             if (GameBoard.isWinner()) {
+                DisplayController.updateStatus(`Winner: ${GameBoard.getCurrentPlayer()}`);
                 //TO DO:
-                // update UI with winning player
                 // disable further click events
                 // reset button appears (or is enabled) to play a new round
             }
 
             else if (GameBoard.isFull()) {
+                DisplayController.updateStatus("Draw");
                 //TO DO:
-                //update UI with 'draw'
                 //disable further click events
                 //reset button appears (or is enabled) to play a new round
             }
 
             else {
                 GameBoard.switchPlayer();
+                DisplayController.updateStatus(`Current player: ${GameBoard.getCurrentPlayer()}`);
             }
         }
     }
@@ -125,10 +126,16 @@ const GameController = (() => {
 
 
 const DisplayController = (() => {
+    let status = document.querySelector(".status");
+    function updateStatus(message) {
+        status.textContent = message;
+    }
+
+
     function updateCell(mark, row, column) {
         const cell = document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
         cell.textContent = mark;
     }
 
-    return { updateCell };
+    return { updateCell, updateStatus };
 })();

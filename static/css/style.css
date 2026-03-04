@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.container {
+    display: flex;
+}
+
 .gameboard {
     display: grid;
     grid-template-columns: repeat(3, 100px);

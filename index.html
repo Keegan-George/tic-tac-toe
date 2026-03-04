@@ -14,25 +14,36 @@
         <h1>Tic Tac Toe</h1>
     </header>
 
-    <main>
-        <section class="display">
-            <span class="status">-</span>
-        </section>
 
-        <section class="gameboard">
-            <div class="cell" data-row="0" data-column="0"></div>
-            <div class="cell" data-row="0" data-column="1"></div>
-            <div class="cell" data-row="0" data-column="2"></div>
-            <div class="cell" data-row="1" data-column="0"></div>
-            <div class="cell" data-row="1" data-column="1"></div>
-            <div class="cell" data-row="1" data-column="2"></div>
-            <div class="cell" data-row="2" data-column="0"></div>
-            <div class="cell" data-row="2" data-column="1"></div>
-            <div class="cell" data-row="2" data-column="2"></div>
-        </section>
+    <div class="container">
+        <div class="player1">
+            <input type="text" class="player1_name">
+            <figure class="x-mark"></figure>
+        </div>
 
-        <button class="reset">Reset</button>
-    </main>
+        <main>
+            <section class="display">
+                <span class="status">-</span>
+            </section>
+            <section class="gameboard">
+                <div class="cell" data-row="0" data-column="0"></div>
+                <div class="cell" data-row="0" data-column="1"></div>
+                <div class="cell" data-row="0" data-column="2"></div>
+                <div class="cell" data-row="1" data-column="0"></div>
+                <div class="cell" data-row="1" data-column="1"></div>
+                <div class="cell" data-row="1" data-column="2"></div>
+                <div class="cell" data-row="2" data-column="0"></div>
+                <div class="cell" data-row="2" data-column="1"></div>
+                <div class="cell" data-row="2" data-column="2"></div>
+            </section>
+            <button class="reset">Reset</button>
+        </main>
+
+        <div class="player2">
+            <input type="text" class="player2_name">
+            <figure class="o-mark"></figure>
+        </div>
+    </div>
 </body>
 
 </html>

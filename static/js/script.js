@@ -112,17 +112,17 @@ const DisplayController = (() => {
         clearCells();
     }
 
-    function enable(){
+    function enable() {
         const gameboard = document.querySelector(".gameboard");
         gameboard.style.pointerEvents = "auto";
     }
 
-    function disable(){
+    function disable() {
         const gameboard = document.querySelector(".gameboard");
         gameboard.style.pointerEvents = "none";
     }
 
-    return { updateCell, updateStatus, reset, enable, disable};
+    return { updateCell, updateStatus, reset, enable, disable };
 })();
 
 
@@ -149,15 +149,11 @@ const GameController = (() => {
 
             if (GameBoard.isWinner()) {
                 DisplayController.updateStatus(`Winner: ${GameBoard.getCurrentPlayer()}`);
-                //TO DO:
-                // disable further click events
                 DisplayController.disable();
             }
 
             else if (GameBoard.isFull()) {
                 DisplayController.updateStatus("Draw");
-                //TO DO:
-                //disable further click events
                 DisplayController.disable();
             }
 
@@ -171,8 +167,7 @@ const GameController = (() => {
     const reset = document.querySelector(".reset");
     reset.addEventListener("click", () => {
         GameBoard.reset();
-        DisplayController.enable();
         DisplayController.reset();
+        DisplayController.enable();
     });
-
 })();

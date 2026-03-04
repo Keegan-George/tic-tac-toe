@@ -2,8 +2,7 @@ const GameBoard = (() => {
     const playerX = "X";
     const playerO = "O";
     let currentPlayer = playerX;
-
-    const gameboardArray = [
+    let gameboardArray = [
         ["", "", ""],
         ["", "", ""],
         ["", "", ""]
@@ -76,13 +75,49 @@ const GameBoard = (() => {
         return currentPlayer;
     }
 
-    return { markPosition, displayGameboard, isWinner, isFull, switchPlayer, isValidMove, getCurrentPlayer };
+    function reset() {
+        currentPlayer = playerX;
+        gameboardArray = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+    }
+
+    return { markPosition, displayGameboard, isWinner, isFull, switchPlayer, isValidMove, getCurrentPlayer, reset };
+})();
+
+const DisplayController = (() => {
+    let status = document.querySelector(".status");
+    function updateStatus(message) {
+        status.textContent = message;
+    }
+
+    function updateCell(mark, row, column) {
+        const cell = document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
+        cell.textContent = mark;
+    }
+
+    function clearDisplay() {
+        updateStatus("-");
+    }
+
+    function clearCells() {
+        cells = document.querySelectorAll(".cell");
+        cells.forEach(cell => cell.textContent = "");
+    }
+
+    function reset() {
+        clearDisplay("-");
+        clearCells();
+    }
+
+    return { updateCell, updateStatus, reset };
 })();
 
 
 const GameController = (() => {
     const gameboard = document.querySelector(".gameboard");
-
     gameboard.addEventListener("click", (event) => {
         const cell = event.target.closest(".cell");
 
@@ -122,20 +157,11 @@ const GameController = (() => {
             }
         }
     }
-})();
 
+    const reset = document.querySelector(".reset");
+    reset.addEventListener("click", () => {
+        GameBoard.reset();
+        DisplayController.reset();
+    });
 
-const DisplayController = (() => {
-    let status = document.querySelector(".status");
-    function updateStatus(message) {
-        status.textContent = message;
-    }
-
-
-    function updateCell(mark, row, column) {
-        const cell = document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
-        cell.textContent = mark;
-    }
-
-    return { updateCell, updateStatus };
 })();

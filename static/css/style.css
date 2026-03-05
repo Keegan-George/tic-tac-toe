@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url('Nunito-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('RobotoCondensed-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -31,6 +47,7 @@
 body {
     color: var(--font-color);
     background-color: var(--background-color);
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 .container {
@@ -63,6 +80,8 @@ main .gameboard {
     color: var(--font-color);
     font-size: 5em;
     transition: background-color 0.2 ease;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
 }
 
 .cell:hover {

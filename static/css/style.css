@@ -10,6 +10,8 @@
     --font-color: #DFD0B8;
     --reset-background-color: #DFD0B8;
     --reset-font-color: #393E46;
+    --display-border-color: #393E46;
+
     --other-color: #948979;
 }
 
@@ -30,6 +32,8 @@ main {
 
 main .display {
     text-align: center;
+    border: 1px solid var(--display-border-color);
+    padding: 1em;
 }
 
 main .gameboard {

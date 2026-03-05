@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+main .display {
+    text-align: center;
+}
+
 .container {
     display: flex;
 }
@@ -19,4 +29,5 @@
     justify-content: center;
     align-items: center;
     border: 1px solid black;
+    font-size: 5em;
 }

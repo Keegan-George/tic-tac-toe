@@ -5,18 +5,26 @@
 }
 
 :root {
+    /*  */
     --background-color: #222831;
     --board-color: #393E46;
     --font-color: #DFD0B8;
-    
+
     /* reset button */
     --reset-font-color: #393E46;
     --reset-background-color: #DFD0B8;
     --reset-hover-color: #D2BD9C;
     --reset-active-color: #C7AC83;
-    
+
+    /* cell */
+    --cell-hover-color: #333d4a;
+    --cell-active-color: #455163;
+
+    /* display */
     --display-border-color: #393E46;
 
+
+    /* might delete... */
     --other-color: #948979;
 }
 
@@ -54,6 +62,15 @@ main .gameboard {
     border: 2px solid var(--board-color);
     color: var(--font-color);
     font-size: 5em;
+    transition: background-color 0.2 ease;
+}
+
+.cell:hover {
+    background-color: var(--cell-hover-color);
+}
+
+.cell:active {
+    background-color: var(--cell-active-color);
 }
 
 main .reset {

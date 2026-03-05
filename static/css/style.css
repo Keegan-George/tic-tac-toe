@@ -6,14 +6,20 @@
 
 :root {
     --background-color: #222831;
-    --border-color: #393E46;
+    --board-color: #393E46;
     --font-color: #DFD0B8;
+    --reset-background-color: #DFD0B8;
+    --reset-font-color: #393E46;
     --other-color: #948979;
 }
 
 body {
     color: var(--font-color);
     background-color: var(--background-color);
+}
+
+.container {
+    display: flex;
 }
 
 main {
@@ -26,21 +32,27 @@ main .display {
     text-align: center;
 }
 
-.container {
-    display: flex;
-}
-
-.gameboard {
+main .gameboard {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
 }
 
-.cell {
+.gameboard .cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--board-color);
     color: var(--font-color);
     font-size: 5em;
+}
+
+main .reset {
+    border-radius: 8px;
+    background-color: var(--reset-background-color);
+    color: var(--reset-font-color);
+    font-weight: 700;
+    font-size: 1em;
+    margin: 2em 4em;
+    padding: 1em;
 }

@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+:root {
+    --background-color: #222831;
+    --border-color: #393E46;
+    --font-color: #DFD0B8;
+    --other-color: #948979;
+}
+
+body {
+    color: var(--font-color);
+    background-color: var(--background-color);
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -28,6 +40,7 @@ main .display {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid var(--border-color);
+    color: var(--font-color);
     font-size: 5em;
 }

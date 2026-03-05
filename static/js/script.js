@@ -1,6 +1,10 @@
+function Player(name) {
+    return { name }
+}
+
 const GameBoard = (() => {
-    const playerX = "X";
-    const playerO = "O";
+    const playerX = Player("X");
+    const playerO = Player("O");
     let currentPlayer = playerX;
     let gameboardArray = [
         ["", "", ""],
@@ -143,12 +147,12 @@ const GameController = (() => {
 
     function validateClick(row, column) {
         if (GameBoard.isValidMove(row, column)) {
-            GameBoard.markPosition(GameBoard.getCurrentPlayer(), row, column);
+            GameBoard.markPosition(GameBoard.getCurrentPlayer().name, row, column);
             GameBoard.displayGameboard();
-            DisplayController.updateCell(GameBoard.getCurrentPlayer(), row, column);
+            DisplayController.updateCell(GameBoard.getCurrentPlayer().name, row, column);
 
             if (GameBoard.isWinner()) {
-                DisplayController.updateStatus(`Winner: ${GameBoard.getCurrentPlayer()}`);
+                DisplayController.updateStatus(`Winner: ${GameBoard.getCurrentPlayer().name}`);
                 DisplayController.disable();
             }
 
@@ -159,7 +163,7 @@ const GameController = (() => {
 
             else {
                 GameBoard.switchPlayer();
-                DisplayController.updateStatus(`Current player: ${GameBoard.getCurrentPlayer()}`);
+                DisplayController.updateStatus(`Current player: ${GameBoard.getCurrentPlayer().name}`);
             }
         }
     }

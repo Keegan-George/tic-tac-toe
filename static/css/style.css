@@ -8,8 +8,13 @@
     --background-color: #222831;
     --board-color: #393E46;
     --font-color: #DFD0B8;
-    --reset-background-color: #DFD0B8;
+    
+    /* reset button */
     --reset-font-color: #393E46;
+    --reset-background-color: #DFD0B8;
+    --reset-hover-color: #D2BD9C;
+    --reset-active-color: #C7AC83;
+    
     --display-border-color: #393E46;
 
     --other-color: #948979;
@@ -59,4 +64,14 @@ main .reset {
     font-size: 1em;
     margin: 2em 4em;
     padding: 1em;
+    transition: background-color 0.2 ease transform 0.2s ease;
+}
+
+.reset:hover {
+    transform: scale(1.05);
+    background-color: var(--reset-hover-color);
+}
+
+.reset:active {
+    background-color: var(--reset-active-color);
 }

@@ -39,9 +39,9 @@
     /* display */
     --display-border-color: #393E46;
 
-
-    /* might delete... */
-    --other-color: #948979;
+    /* input */
+    --input-color: #948979;
+    --input-background-color: #1f242c;   
 }
 
 body {
@@ -54,6 +54,18 @@ body {
     display: flex;
     justify-content: center;
     gap: 3rem;
+}
+
+.container input{
+    padding: 0.8rem;
+    background-color: var(--input-background-color);
+    color: var(--input-color);
+    border: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+
+
 }
 
 main {

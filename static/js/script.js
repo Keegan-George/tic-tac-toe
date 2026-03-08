@@ -1,5 +1,15 @@
 function Player(name) {
-    return { name }
+    let score = 0;
+
+    function addPoint() {
+        score++;
+    }
+
+    function getScore() {
+        return score;
+    }
+
+    return { name, addPoint, getScore }
 }
 
 const GameBoard = (() => {
@@ -102,6 +112,18 @@ const DisplayController = (() => {
         cell.textContent = mark;
     }
 
+    const xScore = document.querySelector(".x-score");
+    const oScore = document.querySelector(".o-score");
+    function updateScore() {
+        currentPlayerScore = GameBoard.getCurrentPlayer().getScore();
+        if (GameBoard.getCurrentPlayer().name == "X") {
+            xScore.textContent = currentPlayerScore;
+        }
+        else {
+            oScore.textContent = currentPlayerScore;
+        }
+    }
+
     function clearDisplay() {
         updateStatus("-");
     }
@@ -126,7 +148,7 @@ const DisplayController = (() => {
         gameboard.style.pointerEvents = "none";
     }
 
-    return { updateCell, updateStatus, reset, enable, disable };
+    return { updateCell, updateStatus, reset, enable, disable, updateScore };
 })();
 
 
@@ -153,6 +175,8 @@ const GameController = (() => {
 
             if (GameBoard.isWinner()) {
                 DisplayController.updateStatus(`Winner: ${GameBoard.getCurrentPlayer().name}`);
+                GameBoard.getCurrentPlayer().addPoint();
+                DisplayController.updateScore();
                 DisplayController.disable();
             }
 

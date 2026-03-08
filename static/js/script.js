@@ -124,18 +124,9 @@ const DisplayController = (() => {
         }
     }
 
-    function clearDisplay() {
-        updateStatus("-");
-    }
-
     function clearCells() {
         cells = document.querySelectorAll(".cell");
         cells.forEach(cell => cell.textContent = "");
-    }
-
-    function reset() {
-        clearDisplay();
-        clearCells();
     }
 
     function enable() {
@@ -148,11 +139,13 @@ const DisplayController = (() => {
         gameboard.style.pointerEvents = "none";
     }
 
-    return { updateCell, updateStatus, reset, enable, disable, updateScore };
+    return { updateCell, updateStatus, clearCells, enable, disable, updateScore };
 })();
 
 
 const GameController = (() => {
+    DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);
+
     const gameboard = document.querySelector(".gameboard");
     gameboard.addEventListener("click", (event) => {
         const cell = event.target.closest(".cell");
@@ -195,7 +188,8 @@ const GameController = (() => {
     const reset = document.querySelector(".reset");
     reset.addEventListener("click", () => {
         GameBoard.reset();
-        DisplayController.reset();
+        DisplayController.clearCells();
         DisplayController.enable();
+        DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`)
     });
 })();

@@ -42,6 +42,9 @@
     /* input */
     --input-color: #948979;
     --input-background-color: #1f242c;
+
+    /* player */
+    --current-player-color: #DFD0B8;
 }
 
 body {
@@ -76,6 +79,10 @@ body {
     font-size: 10rem;
     font-weight: 700;
     text-align: center;
+}
+
+.player.current{
+    border: 1px solid var(--current-player-color);
 }
 
 main {

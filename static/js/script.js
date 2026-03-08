@@ -124,6 +124,20 @@ const DisplayController = (() => {
         }
     }
 
+
+    const playerX = document.querySelector(".player_x");
+    const playerY = document.querySelector(".player_y");
+    function highlightCurrentPlayer() {
+        if (GameBoard.getCurrentPlayer().name == "X") {
+            playerX.classList.add("current");
+            playerY.classList.remove("current");
+        }
+        else {
+            playerY.classList.add("current");
+            playerX.classList.remove("current");
+        }
+    }
+
     function clearCells() {
         cells = document.querySelectorAll(".cell");
         cells.forEach(cell => cell.textContent = "");
@@ -139,12 +153,13 @@ const DisplayController = (() => {
         gameboard.style.pointerEvents = "none";
     }
 
-    return { updateCell, updateStatus, clearCells, enable, disable, updateScore };
+    return { updateCell, updateStatus, clearCells, enable, disable, updateScore, highlightCurrentPlayer };
 })();
 
 
 const GameController = (() => {
     DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);
+    DisplayController.highlightCurrentPlayer();
 
     const gameboard = document.querySelector(".gameboard");
     gameboard.addEventListener("click", (event) => {
@@ -181,6 +196,7 @@ const GameController = (() => {
             else {
                 GameBoard.switchPlayer();
                 DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);
+                DisplayController.highlightCurrentPlayer();
             }
         }
     }
@@ -191,5 +207,6 @@ const GameController = (() => {
         DisplayController.clearCells();
         DisplayController.enable();
         DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`)
+        DisplayController.highlightCurrentPlayer();
     });
 })();

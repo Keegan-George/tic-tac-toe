@@ -90,7 +90,7 @@ const GameBoard = (() => {
     }
 
     function reset() {
-        currentPlayer = playerX;
+        switchPlayer();
         gameboardArray = [
             ["", "", ""],
             ["", "", ""],

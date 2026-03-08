@@ -106,6 +106,22 @@ main .gameboard {
     grid-template-rows: repeat(3, 100px);
 }
 
+.gameboard .cell[data-row="0"] {
+    border-top: none;
+}
+
+.gameboard .cell[data-row="2"] {
+    border-bottom: none;
+}
+
+.gameboard .cell[data-column="0"] {
+    border-left: none;
+}
+
+.gameboard .cell[data-column="2"] {
+    border-right: none;
+}
+
 .gameboard .cell {
     display: flex;
     justify-content: center;
@@ -117,6 +133,7 @@ main .gameboard {
     font-family: "Nunito", sans-serif;
     font-weight: 700;
 }
+
 
 .cell:hover {
     background-color: var(--cell-hover-color);

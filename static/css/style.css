@@ -83,7 +83,7 @@ body {
     text-align: center;
 }
 
-.player.current{
+.player.current {
     border: 1px solid var(--current-player-color);
 }
 

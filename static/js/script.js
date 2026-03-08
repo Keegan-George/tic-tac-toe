@@ -126,14 +126,14 @@ const DisplayController = (() => {
 
 
     const playerX = document.querySelector(".player_x");
-    const playerY = document.querySelector(".player_y");
+    const playerO = document.querySelector(".player_o");
     function highlightCurrentPlayer() {
         if (GameBoard.getCurrentPlayer().name == "X") {
             playerX.classList.add("current");
-            playerY.classList.remove("current");
+            playerO.classList.remove("current");
         }
         else {
-            playerY.classList.add("current");
+            playerO.classList.add("current");
             playerX.classList.remove("current");
         }
     }

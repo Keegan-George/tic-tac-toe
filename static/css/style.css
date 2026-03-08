@@ -73,6 +73,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    border: transparent;
+    transition: border 0.5s ease;
 }
 
 .player .score {

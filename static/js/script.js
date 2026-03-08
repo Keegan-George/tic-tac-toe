@@ -134,7 +134,7 @@ const DisplayController = (() => {
     }
 
     function reset() {
-        clearDisplay("-");
+        clearDisplay();
         clearCells();
     }
 
@@ -187,7 +187,7 @@ const GameController = (() => {
 
             else {
                 GameBoard.switchPlayer();
-                DisplayController.updateStatus(`Current player: ${GameBoard.getCurrentPlayer().name}`);
+                DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);
             }
         }
     }

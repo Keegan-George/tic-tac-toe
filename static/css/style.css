@@ -41,7 +41,7 @@
 
     /* input */
     --input-color: #948979;
-    --input-background-color: #1f242c;   
+    --input-background-color: #1f242c;
 }
 
 body {
@@ -56,7 +56,7 @@ body {
     gap: 3rem;
 }
 
-.container input{
+.container input {
     padding: 0.8rem;
     background-color: var(--input-background-color);
     color: var(--input-color);
@@ -64,8 +64,18 @@ body {
     font-weight: 700;
     font-size: 1.1rem;
     text-align: center;
+}
 
+.container .player {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
+.player .score {
+    font-size: 10rem;
+    font-weight: 700;
+    text-align: center;
 }
 
 main {

@@ -51,6 +51,7 @@ body {
     color: var(--font-color);
     background-color: var(--background-color);
     font-family: "Roboto Condensed", sans-serif;
+    padding: 0.5rem;
 }
 
 .container {

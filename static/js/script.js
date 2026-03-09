@@ -169,8 +169,8 @@ const GameController = (() => {
             return;
         }
 
-        row = cell.getAttribute("data-row");
-        column = cell.getAttribute("data-column");
+        const row = cell.getAttribute("data-row");
+        const column = cell.getAttribute("data-column");
 
         validateClick(row, column);
     });

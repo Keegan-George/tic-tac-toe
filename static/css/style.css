@@ -130,11 +130,10 @@ main .gameboard {
     background-color: var(--background-color);
     color: var(--font-color);
     font-size: 5em;
-    transition: background-color 0.2 ease;
+    transition: background-color 0.2s ease;
     font-family: "Nunito", sans-serif;
     font-weight: 700;
 }
-
 
 .cell:hover,
 .cell:focus {
@@ -153,7 +152,7 @@ main .reset {
     font-size: 1em;
     margin: 2em 4em;
     padding: 1em;
-    transition: background-color 0.2 ease transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .reset:hover {

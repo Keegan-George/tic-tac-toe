@@ -172,7 +172,6 @@ const GameController = (() => {
         if (GameBoard.isValidMove(row, column)) {
             const mark = GameBoard.getCurrentPlayer().name;
             GameBoard.markPosition(mark, row, column);
-            GameBoard.displayGameboard(); //delete this line
             DisplayController.updateCell(cell, mark);
 
             if (GameBoard.isWinner()) {

@@ -134,7 +134,7 @@ const DisplayController = (() => {
     }
 
     function clearCells() {
-        cells = document.querySelectorAll(".cell");
+        const cells = document.querySelectorAll(".cell");
         cells.forEach(cell => cell.textContent = "");
     }
 

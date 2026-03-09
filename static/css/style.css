@@ -127,6 +127,7 @@ main .gameboard {
     justify-content: center;
     align-items: center;
     border: 2px solid var(--board-color);
+    background-color: var(--background-color);
     color: var(--font-color);
     font-size: 5em;
     transition: background-color 0.2 ease;
@@ -135,7 +136,8 @@ main .gameboard {
 }
 
 
-.cell:hover {
+.cell:hover,
+.cell:focus {
     background-color: var(--cell-hover-color);
 }
 

@@ -26,7 +26,9 @@ const GameBoard = (() => {
         gameboardArray[row][column] = mark;
     }
 
+    const DEBUG = false;
     function displayGameboard() {
+        if (!DEBUG) { return; }
         console.log(`
             Tic Tac Toe Board:
             | ${gameboardArray[0][0]} | ${gameboardArray[0][1]} | ${gameboardArray[0][2]} |

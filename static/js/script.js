@@ -85,6 +85,10 @@ const GameBoard = (() => {
         return currentPlayer;
     }
 
+    function getScores() {
+        return { X: playerX.getScore(), O: playerO.getScore() };
+    }
+
     function reset() {
         switchPlayer();
         gameboardArray = [
@@ -94,7 +98,7 @@ const GameBoard = (() => {
         ];
     }
 
-    return { markPosition, displayGameboard, isWinner, isFull, switchPlayer, isValidMove, getCurrentPlayer, reset };
+    return { markPosition, displayGameboard, isWinner, isFull, switchPlayer, isValidMove, getCurrentPlayer, reset, getScores };
 })();
 
 const DisplayController = (() => {
@@ -111,15 +115,10 @@ const DisplayController = (() => {
     const xScore = document.querySelector(".x-score");
     const oScore = document.querySelector(".o-score");
     function updateScore() {
-        currentPlayerScore = GameBoard.getCurrentPlayer().getScore();
-        if (GameBoard.getCurrentPlayer().name == "X") {
-            xScore.textContent = currentPlayerScore;
-        }
-        else {
-            oScore.textContent = currentPlayerScore;
-        }
+        const scores = GameBoard.getScores();
+        xScore.textContent = scores.X;
+        oScore.textContent = scores.O;
     }
-
 
     const playerX = document.querySelector(".player_x");
     const playerO = document.querySelector(".player_o");

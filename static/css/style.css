@@ -22,6 +22,7 @@
 
 :root {
     /*  */
+    --font-family: "Roboto Condensed", sans-serif;
     --background-color: #222831;
     --board-color: #393E46;
     --font-color: #DFD0B8;
@@ -35,6 +36,7 @@
     /* cell */
     --cell-hover-color: #333d4a;
     --cell-active-color: #455163;
+    --cell-font-family: "Nunito", sans-serif;
 
     /* display */
     --display-border-color: #393E46;
@@ -50,7 +52,7 @@
 body {
     color: var(--font-color);
     background-color: var(--background-color);
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: var(--font-family);
     padding: 0.5rem;
 }
 
@@ -135,7 +137,7 @@ main .gameboard {
     color: var(--font-color);
     font-size: 5em;
     transition: background-color 0.2s ease;
-    font-family: "Nunito", sans-serif;
+    font-family: var(--cell-font-family);
     font-weight: 700;
 }
 

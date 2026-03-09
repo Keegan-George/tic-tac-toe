@@ -9,7 +9,7 @@ function Player(name) {
         return score;
     }
 
-    return { name, addPoint, getScore }
+    return { name, addPoint, getScore };
 }
 
 const GameBoard = (() => {
@@ -35,7 +35,7 @@ const GameBoard = (() => {
             | ${gameboardArray[1][0]} | ${gameboardArray[1][1]} | ${gameboardArray[1][2]} |
             | ${gameboardArray[2][0]} | ${gameboardArray[2][1]} | ${gameboardArray[2][2]} |
             `
-        )
+        );
     }
 
     function isWinner() {
@@ -123,7 +123,7 @@ const DisplayController = (() => {
     const playerX = document.querySelector(".player_x");
     const playerO = document.querySelector(".player_o");
     function highlightCurrentPlayer() {
-        if (GameBoard.getCurrentPlayer().name == "X") {
+        if (GameBoard.getCurrentPlayer().name === "X") {
             playerX.classList.add("current");
             playerO.classList.remove("current");
         }
@@ -200,7 +200,7 @@ const GameController = (() => {
         GameBoard.reset();
         DisplayController.clearCells();
         DisplayController.enable();
-        DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`)
+        DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);
         DisplayController.highlightCurrentPlayer();
     });
 })();

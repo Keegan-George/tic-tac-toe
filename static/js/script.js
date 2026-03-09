@@ -249,8 +249,17 @@ const DisplayController = (() => {
  * @namespace GameController
  */
 const GameController = (() => {
-    DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);
-    DisplayController.highlightCurrentPlayer();
+    /**
+     * Initializes the game status and player highlight on startup.
+     * @returns {void}
+     */
+    function init() {
+        DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);
+        DisplayController.highlightCurrentPlayer();
+
+    }
+
+    init();
 
     const gameboard = document.querySelector(".gameboard");
     /**

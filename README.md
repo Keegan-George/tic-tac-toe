@@ -31,7 +31,7 @@ This project is part of [The Odin Project's Full Stack Javascript path](https://
 A live demo is available here: [Tic Tac Toe App](https://keegan-george.github.io/tic-tac-toe/)
 
 ## Architecture
-GameBoard - manages board state and win conditions
-DisplayController - handles all DOM updates
-GameController - wires user events to game logic
-Player factory - encapsulates player data
+- GameBoard - manages board state and win conditions
+- DisplayController - handles all DOM updates
+- GameController - wires user events to game logic
+- Player factory - encapsulates player data

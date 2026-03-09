@@ -107,8 +107,7 @@ const DisplayController = (() => {
         status.textContent = message;
     }
 
-    function updateCell(mark, row, column) {
-        const cell = document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
+    function updateCell(cell, mark) {
         cell.textContent = mark;
     }
 
@@ -166,17 +165,18 @@ const GameController = (() => {
         const row = Number(cell.getAttribute("data-row"));
         const column = Number(cell.getAttribute("data-column"));
 
-        validateClick(row, column);
+        handleMove(cell, row, column);
     });
 
-    function validateClick(row, column) {
+    function handleMove(cell, row, column) {
         if (GameBoard.isValidMove(row, column)) {
-            GameBoard.markPosition(GameBoard.getCurrentPlayer().name, row, column);
-            GameBoard.displayGameboard();
-            DisplayController.updateCell(GameBoard.getCurrentPlayer().name, row, column);
+            const mark = GameBoard.getCurrentPlayer().name;
+            GameBoard.markPosition(mark, row, column);
+            GameBoard.displayGameboard(); //delete this line
+            DisplayController.updateCell(cell, mark);
 
             if (GameBoard.isWinner()) {
-                DisplayController.updateStatus(`Winner: ${GameBoard.getCurrentPlayer().name}`);
+                DisplayController.updateStatus(`Winner: ${mark}`);
                 GameBoard.getCurrentPlayer().addPoint();
                 DisplayController.updateScore();
                 DisplayController.disable();

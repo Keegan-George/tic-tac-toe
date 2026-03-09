@@ -22,14 +22,8 @@ const GameBoard = (() => {
         ["", "", ""]
     ];
 
-    function markPosition(mark, xCoor, yCoor) {
-        if (gameboardArray[xCoor][yCoor] === "") {
-            gameboardArray[xCoor][yCoor] = mark;
-        }
-
-        else {
-            console.log("Please choose another position. This position is already marked.");
-        }
+    function markPosition(mark, row, column) {
+        gameboardArray[row][column] = mark;
     }
 
     function displayGameboard() {

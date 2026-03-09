@@ -27,11 +27,11 @@
     --board-color: #393E46;
     --font-color: #DFD0B8;
 
-    /* reset button */
-    --reset-font-color: #393E46;
-    --reset-background-color: #DFD0B8;
-    --reset-hover-color: #D2BD9C;
-    --reset-active-color: #C7AC83;
+    /* new-game button */
+    --new-game-font-color: #393E46;
+    --new-game-background-color: #DFD0B8;
+    --new-game-hover-color: #D2BD9C;
+    --new-game-active-color: #C7AC83;
 
     /* cell */
     --cell-hover-color: #333d4a;
@@ -150,10 +150,10 @@ main .gameboard {
     background-color: var(--cell-active-color);
 }
 
-main .reset {
+main .new-game {
     border-radius: 8px;
-    background-color: var(--reset-background-color);
-    color: var(--reset-font-color);
+    background-color: var(--new-game-background-color);
+    color: var(--new-game-font-color);
     font-weight: 700;
     font-size: 1em;
     margin: 2em 4em;
@@ -161,11 +161,11 @@ main .reset {
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.reset:hover {
+.new-game:hover {
     transform: scale(1.05);
-    background-color: var(--reset-hover-color);
+    background-color: var(--new-game-hover-color);
 }
 
-.reset:active {
-    background-color: var(--reset-active-color);
+.new-game:active {
+    background-color: var(--new-game-active-color);
 }

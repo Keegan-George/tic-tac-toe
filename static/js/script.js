@@ -89,7 +89,7 @@ const GameBoard = (() => {
         return { X: playerX.getScore(), O: playerO.getScore() };
     }
 
-    function reset() {
+    function newGame() {
         switchPlayer();
         gameboardArray = [
             ["", "", ""],
@@ -98,7 +98,7 @@ const GameBoard = (() => {
         ];
     }
 
-    return { markPosition, displayGameboard, isWinner, isFull, switchPlayer, isValidMove, getCurrentPlayer, reset, getScores };
+    return { markPosition, displayGameboard, isWinner, isFull, switchPlayer, isValidMove, getCurrentPlayer, newGame, getScores };
 })();
 
 const DisplayController = (() => {
@@ -194,9 +194,9 @@ const GameController = (() => {
         }
     }
 
-    const reset = document.querySelector(".reset");
-    reset.addEventListener("click", () => {
-        GameBoard.reset();
+    const newGameButton = document.querySelector(".new-game");
+    newGameButton.addEventListener("click", () => {
+        GameBoard.newGame();
         DisplayController.clearCells();
         DisplayController.enable();
         DisplayController.updateStatus(`${GameBoard.getCurrentPlayer().name}'s turn`);

@@ -138,13 +138,12 @@ const DisplayController = (() => {
         cells.forEach(cell => cell.textContent = "");
     }
 
+    const gameboard = document.querySelector(".gameboard");
     function enable() {
-        const gameboard = document.querySelector(".gameboard");
         gameboard.style.pointerEvents = "auto";
     }
 
     function disable() {
-        const gameboard = document.querySelector(".gameboard");
         gameboard.style.pointerEvents = "none";
     }
 

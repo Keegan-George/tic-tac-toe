@@ -70,6 +70,10 @@ body {
     text-align: center;
 }
 
+.container input:focus {
+    outline: 2px solid var(--current-player-color);
+}
+
 .container .player {
     display: flex;
     flex-direction: column;

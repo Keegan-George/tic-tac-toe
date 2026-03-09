@@ -55,7 +55,7 @@ const GameBoard = (() => {
                 column.push(gameboardArray[j][i]);
             }
 
-            if (column.every(cell => cell !== "" && cell === column[i][0])) {
+            if (column.every(cell => cell !== "" && cell === column[0])) {
                 return true;
             }
         }
